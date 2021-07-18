@@ -3,11 +3,11 @@ language: generic
 services:
   - docker
 
-# before_install:
-#   - docker build -t trungnv184/docker-app -f Dockerfile.dev .
+before_install:
+  - docker build -t trungnv184/docker-app -f Dockerfile.dev .
 
-# script:
-#   - docker run trungnv184/docker-app
+script:
+  - docker run trungnv184/docker-app nm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
