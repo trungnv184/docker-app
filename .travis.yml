@@ -1,22 +1,23 @@
-sudo: required
+# sudo: required
+language: generic
 services:
   - docker
 
-before_install:
-  - docker build -t trungnv184/docker-app -f Dockerfile.dev .
+# before_install:
+#   - docker build -t trungnv184/docker-app -f Dockerfile.dev .
 
-script:
-  - docker run trungnv184/docker-app
+# script:
+#   - docker run trungnv184/docker-app
 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
   app: "docker"
   env: "Docker-env"
-  bucket_name: "elasticbeanstalk-us-east-2-571854268523"
+  bucket_name: "web-app-vn"
   bucket_path: "docker"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key:
-    secure: "$AWS_ACCESS_SECRET_KEY"
+  secret_access_key: $AWS_ACCESS_SECRET_KEY
+    
