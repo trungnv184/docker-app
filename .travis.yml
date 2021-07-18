@@ -7,7 +7,7 @@ before_install:
   - docker build -t trungnv184/docker-app -f Dockerfile.dev .
 
 script:
-  - docker run trungnv184/docker-app nm run test -- --coverage
+  - docker run trungnv184/docker-app npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
