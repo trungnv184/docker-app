@@ -1,11 +1,12 @@
+sudo: required
 services:
-- docker
+  - docker
 
 before_install:
-- docker build -t trungnv184/docker-app -f Dockerfile.dev .
+  - docker build -t trungnv184/docker-app -f Dockerfile.dev .
 
 script:
-- docker run trungnv184/docker-app npm run test -- --coverage
+  - docker run trungnv184/docker-app
 
 deploy:
   provider: elasticbeanstalk
