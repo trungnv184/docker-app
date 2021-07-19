@@ -14,7 +14,7 @@ exports[`renders learn react link 1`] = `
         src="logo.svg"
       />
       <p>
-        Hi there Nguyen
+        How are you today?
       </p>
     </header>
   </div>

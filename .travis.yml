@@ -1,14 +1,15 @@
-# sudo: required
-language: generic
-services:
-  - docker
+sudo: required 
+language: node_js
+node_js:
+    - "stable"
+    
+services: 
+    - docker
 
-# before_install:
-#   - docker build -t trungnv184/docker-app -f Dockerfile.dev .
-
-# script:
-#   - docker run trungnv184/docker-app npm run test -- --coverage
-
+before_install: 
+    - docker build -t trungnv184/sample-app -f Dockerfile.dev .
+script:     
+    - docker run -e CI=true trungnv184/sample-app npm run test -- --coverage
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
