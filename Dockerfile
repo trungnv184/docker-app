@@ -1,5 +1,5 @@
 #Split everything the build into two steps
-FROM node:alpine as builder
+FROM node:alpine
 # Above, we set the base image for this first stage as a light weigh node called alpine
 
 WORKDIR '/app'
@@ -22,7 +22,7 @@ FROM nginx
 EXPOSE 80 
 #Nginx runs on port 80, so elastic beanstalk uses the expose command to expose this port
 
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=0 /app/build /usr/share/nginx/html
 
 # Copy the content of the builder step, move the contents of build folder into the html folder in this nginx container
 # That's where our app would run from in aws
